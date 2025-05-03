@@ -133,7 +133,8 @@ export interface TodoSlice {
   handleSearch: (query) => {
     set((state) => {
       if (query === '') return { isSearch: false };
-      const result = state.todos.filter(todo => todo.title.toLowerCase().includes(query.toLowerCase()) || todo.description.toLowerCase().includes(query.toLowerCase()));
+      const result = state.todos.filter(todo => todo.title.toLowerCase().includes(query.toLowerCase()) || (todo.description !== undefined ? todo.description.toLowerCase().includes(query.toLowerCase()) : false)
+      );
       return { isSearch: true, searchTodo: result };
     });
   },
