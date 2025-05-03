@@ -17,12 +17,12 @@ A clean and interactive Kanban-style task manager built with **React**, **TypeSc
 
 ## ✨ Features
 
-✅ Add new task  
-📝 Edit existing task  
-❌ Delete task  
-🔀 Drag-and-drop tasks across `To Do`, `In Progress`, and `Completed` columns
-🔍 **Search tasks by keyword** 
-💾 Data is persisted using `localStorage`
+- ✅ Add new task  
+- 📝 Edit existing task  
+- ❌ Delete task  
+- 🔀 Drag-and-drop across columns (`To Do`, `In Progress`, `Completed`)  
+- 🔍 **Search tasks by keyword**  
+- 💾 Persistent data storage using `localStorage`
 
 ---
 
@@ -57,7 +57,7 @@ This will generate the main.css file and watch for changes.
 npm run dev
 ```
 
-## Project Structure
+## 🗂 Project Structure
 
 Below is an abbreviated folder structure:
 
