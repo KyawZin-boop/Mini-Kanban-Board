@@ -20,7 +20,8 @@ A clean and interactive Kanban-style task manager built with **React**, **TypeSc
 ✅ Add new task  
 📝 Edit existing task  
 ❌ Delete task  
-🔀 Drag-and-drop tasks across `To Do`, `In Progress`, and `Completed` columns  
+🔀 Drag-and-drop tasks across `To Do`, `In Progress`, and `Completed` columns
+🔍 **Search tasks by keyword** 
 💾 Data is persisted using `localStorage`
 
 ---
@@ -32,11 +33,13 @@ A clean and interactive Kanban-style task manager built with **React**, **TypeSc
 ```bash
 git clone https://github.com/KyawZin-boop/Mini-Kanban-Board.git
 cd mini-kanban-board
+```
 
 ### 2. Install Dependencies
 
 ```bash
 npm install
+```
 
 ### 3.  Run Tailwind CLI
 
@@ -44,6 +47,7 @@ Tailwind CSS is configured to compile manually. Open a new terminal and run:
 
 ```bash
 npx tailwindcss -i ./src/index.css -o ./src/main.css --watch
+```
 
 This will generate the main.css file and watch for changes.
 
@@ -51,6 +55,7 @@ This will generate the main.css file and watch for changes.
 
 ```bash
 npm run dev
+```
 
 ## Project Structure
 
