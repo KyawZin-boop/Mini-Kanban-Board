@@ -29,43 +29,43 @@ const TodoDialog = () => {
   const handleSubmit = () => {
     openLoader();
     setTimeout(() => {
-    }, 2000);
-    if (!validate()) {
-      toaster.create({
-        title: 'Validation Error',
-        description: 'Title is required',
-        type: 'error',
-        duration: 3000,
-      });
-      hideLoader();
-      return;
-    }
+      if (!validate()) {
+        toaster.create({
+          title: 'Validation Error',
+          description: 'Title is required',
+          type: 'error',
+          duration: 3000,
+        });
+        hideLoader();
+        return;
+      }
 
-    if (editTodoItem) {
-      editTodo(editTodoItem.id, {
-        title,
-        description: description.trim() || undefined,
-      });
-      toaster.create({
-        title: 'Task updated',
-        type: 'success',
-        duration: 2000,
-      });
-    } else {
-      addTodo({
-        title,
-        description: description.trim() || '',
-        status: 'todo',
-      });
-      toaster.create({
-        title: 'Task added',
-        type: 'success',
-        duration: 2000,
-      });
-    }
-    
-    hideLoader();
-    closeDialog();
+      if (editTodoItem) {
+        editTodo(editTodoItem.id, {
+          title,
+          description: description.trim() || undefined,
+        });
+        toaster.create({
+          title: 'Task updated',
+          type: 'success',
+          duration: 2000,
+        });
+      } else {
+        addTodo({
+          title,
+          description: description.trim() || '',
+          status: 'todo',
+        });
+        toaster.create({
+          title: 'Task added',
+          type: 'success',
+          duration: 2000,
+        });
+      }
+      
+      hideLoader();
+      closeDialog();
+    }, 1000);
   };
   
   const handleClose = () => {

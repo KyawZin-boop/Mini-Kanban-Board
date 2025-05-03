@@ -14,7 +14,7 @@ const HomeView = () => {
 
   return (
     <main className="min-h-full w-full px-4 py-5 overflow-y-auto dot-pattern">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mb-10">
         <div className="flex justify-between items-center w-full mb-8">
           <button
             className="text-md text-white border-2 hover:bg-[#005E9A] cursor-pointer bg-[#00ADEE] rounded-md py-2 px-4 font-bold flex items-center gap-2"

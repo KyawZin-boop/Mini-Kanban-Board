@@ -12,7 +12,7 @@ export const DroppableColumn: React.FC<DroppableColumnProps> = ({ id, children }
   });
 
   return (
-    <div ref={setNodeRef} className="p-2 rounded">
+    <div ref={setNodeRef} className="rounded">
       {children}
     </div>
   );
