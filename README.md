@@ -1,55 +1,78 @@
-# React + TypeScript + Vite
+# 📝 Mini Kanban Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean and interactive Kanban-style task manager built with **React**, **TypeScript**, and **Tailwind CSS**. You can add, edit, delete, and move tasks between columns — with full drag-and-drop support and persistent data using localStorage.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Chakra UI](https://chakra-ui.com/)
+- [Zustand](https://github.com/pmndrs/zustand) (state management)
+- [dnd-kit](https://github.com/clauderic/dnd-kit) (drag-and-drop)
+- `localStorage` (for persistence)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ✨ Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+✅ Add new task  
+📝 Edit existing task  
+❌ Delete task  
+🔀 Drag-and-drop tasks across `To Do`, `In Progress`, and `Completed` columns  
+💾 Data is persisted using `localStorage`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
-# Mini-Kanban-Board
+## 📦 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/KyawZin-boop/Mini-Kanban-Board.git
+cd mini-kanban-board
+
+### 2. Install Dependencies
+
+```bash
+npm install
+
+### 3.  Run Tailwind CLI
+
+Tailwind CSS is configured to compile manually. Open a new terminal and run:
+
+```bash
+npx tailwindcss -i ./src/index.css -o ./src/main.css --watch
+
+This will generate the main.css file and watch for changes.
+
+### 4. Start Development Server
+
+```bash
+npm run dev
+
+## Project Structure
+
+Below is an abbreviated folder structure:
+
+<pre>
+src/
+├── components/       # Reusable UI components (dialog, navbar, loader, etc.)
+├── layouts/          # Default Layout
+├── modules/          # Multiple Pages
+├── store/            # Zustand store setup
+├── App.tsx           # Main application component
+├── index.css         # Tailwind CSS entry
+├── main.css          # Output from Tailwind build
+├── main.tsx          # App entry point
+</pre>
+
+For a complete view, please refer to the project root.
+
+## 🧠 Notes
+
+Zustand makes global state simple and boilerplate-free.
+dnd-kit enables lightweight and customizable drag-and-drop behavior.
+Chakra UI components complement Tailwind styling when needed.
+Data is saved in localStorage, so it survives page reloads or browser restarts.
