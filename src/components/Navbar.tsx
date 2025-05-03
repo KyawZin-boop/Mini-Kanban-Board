@@ -1,6 +1,6 @@
 import { useStore } from "@/store";
 import { useEffect, useState } from "react";
-import { LuSearch } from "react-icons/lu";
+import { LuSearch, LuTrash2 } from "react-icons/lu";
 
 export const Navbar = () => {
 
@@ -19,11 +19,11 @@ export const Navbar = () => {
     }, []);
 
     return (
-        <nav className="bg-[#00ADEE] flex items-center justify-between px-4 py-2">
+        <nav className="bg-[#00ADEE] flex items-center justify-between px-4 py-2 drop-shadow-xl">
             <div className="text-3xl text-[#005E9A] leading-[0.75] font-bold tracking-normal cursor-pointer">Kanban Board</div>
             <div className="w-full max-w-sm min-w-[200px]">
                 <div className="relative">
-                    <input type="email" onChange={(e) => setQuery(e.target.value)} className="w-full bg-transparent placeholder:text-gray-600 text-black text-sm border border-[#005E9A] rounded-md pl-3 pr-16 py-2 transition duration-300 ease focus:outline-none shadow-sm focus:shadow" placeholder="Type Todo to search..." />
+                    <input type="email" value={query} onChange={(e) => setQuery(e.target.value)} className="w-full bg-transparent placeholder:text-gray-600 text-black text-sm border border-[#005E9A] rounded-md pl-3 pr-16 py-2 transition duration-300 ease focus:outline-none shadow-sm focus:shadow" placeholder="Type Todo to search..." />
                     <button
                     className="absolute right-1 top-1 rounded bg-[#175E9A] py-1 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:shadow-none active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="button"
@@ -31,6 +31,7 @@ export const Navbar = () => {
                     >
                     <LuSearch className="text-xl"/>
                     </button>
+                    {query && <LuTrash2 className="text-red-500 text-2xl cursor-pointer absolute right-14 top-2" onClick={() => {setQuery(''); handleSearch('')}} title="Clear" />}
                 </div>
             </div>
             <div className="min-w-[200px] hidden md:block">
