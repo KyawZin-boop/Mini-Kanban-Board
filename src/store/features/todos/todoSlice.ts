@@ -15,6 +15,7 @@ export interface TodoSlice {
     editTodoItem: Todo | null;
     setEditTodo: (id: string) => void;
     clearEditTodo: () => void;
+    searchQuery: string;
     isSearch: boolean;
     searchTodo: Todo[];
     handleSearch: (query: string) => void;
@@ -47,6 +48,10 @@ export interface TodoSlice {
     set((state) => {
       const newTodos = [...state.todos, newTodo];
       localStorage.setItem('todos', JSON.stringify(newTodos));
+      if(state.searchQuery !== '') {
+        const result = newTodos.filter(todo => todo.title.toLowerCase().includes(state.searchQuery.toLowerCase()) || (todo.description !== undefined ? todo.description.toLowerCase().includes(state.searchQuery.toLowerCase()) : false));
+        return { todos: newTodos, searchTodo: result };
+      }  
       return { todos: newTodos };
     });
   },
@@ -63,6 +68,8 @@ export interface TodoSlice {
       const newTodos = state.todos.map(todo => 
         todo.id === id ? { ...todo, ...updates } : todo
       );
+      const inSearchIndex = state.searchTodo.findIndex(todo => todo.id === id);
+      if(inSearchIndex !== -1) state.searchTodo[inSearchIndex] = { ...state.searchTodo[inSearchIndex], ...updates };
       localStorage.setItem('todos', JSON.stringify(newTodos));
       
       return { todos: newTodos, editTodoItem: null };
@@ -80,6 +87,8 @@ export interface TodoSlice {
   deleteTodo: (id) => {
     set((state) => {
       const newTodos = state.todos.filter(todo => todo.id !== id);
+      const inSearchIndex = state.searchTodo.findIndex(todo => todo.id === id);
+      if(inSearchIndex !== -1) state.searchTodo = state.searchTodo.filter((_, index) => index !== inSearchIndex);
       localStorage.setItem('todos', JSON.stringify(newTodos));
       return { todos: newTodos };
     });
@@ -128,11 +137,14 @@ export interface TodoSlice {
 
   isSearch: false,
 
+  searchQuery: '',
+
   searchTodo: [],
 
   handleSearch: (query) => {
     set((state) => {
-      if (query === '') return { isSearch: false };
+      if (query === '') return { isSearch: false, searchQuery: '', searchTodo: [] };
+      state.searchQuery = query;
       const result = state.todos.filter(todo => todo.title.toLowerCase().includes(query.toLowerCase()) || (todo.description !== undefined ? todo.description.toLowerCase().includes(query.toLowerCase()) : false)
       );
       return { isSearch: true, searchTodo: result };
